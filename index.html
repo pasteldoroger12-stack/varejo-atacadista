@@ -1,98 +1,256 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>TechNow | Varejo de Tecnologia</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-  <style>
-    :root{--cor:#ff0033;--fundo:#0a0a0a;--texto:#f1f1f1}
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Arial,sans-serif}
-    body{background:var(--fundo);color:var(--texto)}
-    header{display:flex;align-items:center;justify-content:space-between;padding:15px 5vw;background:#000}
-    header input{border:none;padding:8px 12px;border-radius:4px;width:200px}
-    header button{background:var(--cor);border:none;color:#fff;padding:8px 14px;border-radius:4px;cursor:pointer}
-    .banner{background:url(https://i.imgur.com/eBPw2dL.jpg) center/cover no-repeat;height:50vh;display:flex;align-items:center;justify-content:center;text-align:center}
-    .banner h1{font-size:3rem;text-shadow:0 2px 8px #000}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:30px 5vw}
-    .card{background:#111;border:1px solid #222;border-radius:8px;overflow:hidden;transition:.3s}
-    .card:hover{transform:translateY(-4px);border-color:var(--cor)}
-    .card img{width:100%;height:160px;object-fit:cover}
-    .info{padding:12px}
-    .preco{font-size:1.4rem;color:var(--cor);margin:6px 0}
-    .botao{background:var(--cor);border:none;color:#fff;width:100%;padding:10px;border-radius:4px;cursor:pointer}
-    #carrinho{position:fixed;bottom:15px;right:15px;background:var(--cor);padding:12px 18px;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.6)}
-  </style>
+<meta charset="UTF-8">
+<title>Black Friday Premium Brasil</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--cor:linear-gradient(135deg,#000 0%,#b00 100%)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+body{background:#f5f5f5;color:#222}
+header{background:var(--cor);color:#fff;padding:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+header .logo{font-size:24px;font-weight:700}
+header .carrinho{cursor:pointer;position:relative;font-size:22px}
+header .carrinho span{position:absolute;top:-6px;right:-6px;background:#ff0;color:#000;border-radius:50%;width:18px;height:18px;font-size:11px;display:flex;align-items:center;justify-content:center}
+nav{background:#222;display:flex;justify-content:center;gap:24px;padding:10px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-size:14px}
+.banner{background:#b00;color:#fff;text-align:center;padding:10px;font-size:13px}
+.produtos{display:flex;flex-wrap:wrap;justify-content:center;padding:18px;gap:18px}
+.produto{background:#fff;border:1px solid #ddd;border-radius:12px;width:260px;max-width:100%;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:transform .2s}
+.produto:hover{transform:translateY(-4px)}
+.produto img{width:100%;height:200px;object-fit:cover;border-radius:8px}
+.produto h3{font-size:15px;margin:8px 0}
+.produto p{font-size:13px;color:#555}
+.produto .preco{font-size:18px;font-weight:700;color:#b00}
+.produto button{width:100%;padding:10px;background:#000;color:#fff;border:none;border-radius:6px;cursor:pointer;margin-top:8px}
+footer{background:#000;color:#fff;text-align:center;padding:12px;font-size:12px}
+.carrinho-sidebar{position:fixed;top:0;right:-100%;width:100%;max-width:320px;height:100%;background:#fff;box-shadow:-4px 0 12px rgba(0,0,0,.15);transition:right .3s;z-index:999}
+.carrinho-sidebar.aberto{right:0}
+.carrinho-header{background:var(--cor);color:#fff;padding:14px;display:flex;justify-content:space-between;align-items:center}
+.carrinho-header h4{font-size:16px}
+.carrinho-header i{cursor:pointer}
+.carrinho-body{padding:14px;max-height:calc(100% - 160px);overflow-y:auto}
+.carrinho-item{display:flex;align-items:center;margin-bottom:12px;border-bottom:1px solid #eee;padding-bottom:10px}
+.carrinho-item img{width:60px;height:60px;object-fit:cover;border-radius:4px;margin-right:10px}
+.carrinho-info{flex:1;font-size:13px}
+.carrinho-info .nome{font-weight:600}
+.carrinho-info .qtd{margin-top:4px}
+.carrinho-info .qtd button{background:#ddd;border:none;width:20px;height:20px;border-radius:50%;cursor:pointer;margin:0 4px}
+.carrinho-footer{padding:14px;border-top:1px solid #ddd;text-align:center}
+.carrinho-footer .total{font-size:18px;font-weight:700;margin-bottom:10px}
+.carrinho-footer button{width:100%;padding:10px;background:#000;color:#fff;border:none;border-radius:6px;cursor:pointer}
+.checkout-form{display:none;margin-top:12px;text-align:left}
+.checkout-form input,.checkout-form select{width:100%;padding:8px;margin:4px 0;border:1px solid #ccc;border-radius:4px}
+.checkout-form button{background:#b00;color:#fff;border:none;padding:10px;border-radius:6px;cursor:pointer;margin-top:6px}
+@media(max-width:600px){
+  header .logo{font-size:20px}
+  nav{gap:12px}
+  nav a{font-size:12px}
+  .produto{width:100%;max-width:320px}
+}
+</style>
 </head>
 <body>
+
 <header>
-  <h2>TechNow</h2>
-  <div>
-    <input id="busca" placeholder="Buscar..."/>
-    <button onclick="filtrar()">🔍</button>
+  <div class="logo">Black Friday Premium Brasil</div>
+  <div class="carrinho" onclick="toggleCarrinho()">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="contador">0</span>
   </div>
 </header>
 
-<section class="banner">
-  <h1>⚡ Black Friday Antecipada</h1>
-</section>
+<nav>
+  <a href="#">Masculino</a>
+  <a href="#">Feminino</a>
+  <a href="#">Relógios</a>
+  <a href="#">Acessórios</a>
+</nav>
 
-<div class="grid" id="produtos"></div>
-<div id="carrinho" style="display:none">🛒 <span id="total">R$ 0,00</span>
-  <button class="botao" onclick="pagar()">Finalizar compra</button>
+<div class="banner">
+  🏴 BLACK FRIDAY - ATÉ 70% OFF | Parcelamento em 12x | Pix com 10% desconto
 </div>
 
-<script src="https://js.stripe.com/v3/"></script>
+<div class="produtos">
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=60" alt="Jordan 1">
+    <h3>Nike Air Jordan 1 High</h3>
+    <p>Replica AAA – couro italiano</p>
+    <p class="preco">R$ 299,00</p>
+    <button onclick="addCarrinho('Jordan 1', 299, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=60" alt="LV Neverfull">
+    <h3>Louis Vuitton Neverfull</h3>
+    <p>Lona importada – fivelas originais</p>
+    <p class="preco">R$ 449,00</p>
+    <button onclick="addCarrinho('LV Neverfull', 449, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1609587312208-cea54be969e7?auto=format&fit=crop&w=800&q=60" alt="Rolex Sub">
+    <h3>Rolex Submariner</h3>
+    <p>Automático – aço 904L – caixa holograma</p>
+    <p class="preco">R$ 799,00</p>
+    <button onclick="addCarrinho('Rolex Sub', 799, 'https://images.unsplash.com/photo-1609587312208-cea54be969e7?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=60" alt="Cinto Gucci">
+    <h3>Gucci Double G</h3>
+    <p>Couro legítimo – GG buckle</p>
+    <p class="preco">R$ 199,00</p>
+    <button onclick="addCarrinho('Cinto Gucci', 199, 'https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=800&q=60" alt="Ray-Ban">
+    <h3>Ray-Ban Aviator</h3>
+    <p>Lentes polarizadas – armação metálica</p>
+    <p class="preco">R$ 149,00</p>
+    <button onclick="addCarrinho('Ray-Ban', 149, 'https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=60" alt="Cartier">
+    <h3>Cartier Love Bracelet</h3>
+    <p>Aço inox – parafuses 1:1</p>
+    <p class="preco">R$ 259,00</p>
+    <button onclick="addCarrinho('Bracelet Cartier', 259, 'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+</div>
+
+<!-- Carrinho lateral -->
+<div class="carrinho-sidebar" id="carrinhoSidebar">
+  <div class="carrinho-header">
+    <h4>Meu Carrinho</h4>
+    <i class="fas fa-times" onclick="toggleCarrinho()"></i>
+  </div>
+  <div class="carrinho-body" id="carrinhoBody"></div>
+  <div class="carrinho-footer">
+    <div class="total" id="total">Total: R$ 0,00</div>
+    <button onclick="exibirCheckout()">Finalizar compra</button>
+    <div class="checkout-form" id="checkoutForm">
+      <input placeholder="Nome completo" id="nome">
+      <input placeholder="CPF" id="cpf">
+      <input placeholder="Email" id="email">
+      <input placeholder="WhatsApp" id="whatsapp">
+      <select id="formaPagamento" onchange="atualizarForma()">
+        <option value="">Forma de pagamento</option>
+        <option value="pix">Pix (10% desconto)</option>
+        <option value="cartao">Cartão de crédito</option>
+      </select>
+      <select id="parcelas" style="display:none">
+        <option value="1">1x sem juros</option>
+        <option value="2">2x sem juros</option>
+        <option value="3">3x sem juros</option>
+        <option value="4">4x sem juros</option>
+        <option value="5">5x sem juros</option>
+        <option value="6">6x sem juros</option>
+        <option value="7">7x sem juros</option>
+        <option value="8">8x sem juros</option>
+        <option value="9">9x sem juros</option>
+        <option value="10">10x sem juros</option>
+        <option value="11">11x sem juros</option>
+        <option value="12">12x sem juros</option>
+      </select>
+      <button onclick="finalizarCompra()">Efetuar pagamento</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  CNPJ: 47.293.333/0001-00 | São Paulo – SP | WhatsApp 11 9 8765-4321
+</footer>
+
 <script>
-/* ---------- CATÁLOGO ---------- */
-const produtos = [
-  {id:1,nome:"iPhone 15 Pro",img:"https://i.imgur.com/5GjTQlK.jpeg",preco:849900},
-  {id:2,nome:"MacBook Air M2",img:"https://i.imgur.com/3wG3U4w.jpeg",preco:949900},
-  {id:3,nome:"Galaxy S24",img:"https://i.imgur.com/7u0jFvB.jpeg",preco:679900},
-  {id:4,nome:"PlayStation 5",img:"https://i.imgur.com/muNMW1e.jpeg",preco:429900},
-  {id:5,nome:"AirPods Pro 2",img:"https://i.imgur.com/9i6o1cQ.jpeg",preco:139900},
-  {id:6,nome:"Smart TV 55″ 4K",img:"https://i.imgur.com/8hBoXkP.jpeg",preco:249900}
-];
 let carrinho = [];
 
-/* ---------- MOSTRAR NA TELA ---------- */
-function render(lista){
-  document.getElementById('produtos').innerHTML = lista.map(p=>`
-    <div class="card">
-      <img src="${p.img}" alt="${p.nome}">
-      <div class="info">
-        <div>${p.nome}</div>
-        <div class="preco">R$ ${(p.preco/100).toLocaleString('pt-BR')}</div>
-        <button class="botao" onclick="add(${p.id})">Comprar</button>
+function addCarrinho(nome, preco, img) {
+  const item = carrinho.find(p => p.nome === nome);
+  if (item) {
+    item.qtd++;
+  } else {
+    carrinho.push({nome, preco, img, qtd: 1});
+  }
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+  const body = document.getElementById('carrinhoBody');
+  const contador = document.getElementById('contador');
+  const totalEl = document.getElementById('total');
+  body.innerHTML = '';
+  let total = 0;
+  carrinho.forEach(item => {
+    total += item.preco * item.qtd;
+    const div = document.createElement('div');
+    div.className = 'carrinho-item';
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.nome}">
+      <div class="carrinho-info">
+        <div class="nome">${item.nome}</div>
+        <div class="qtd">
+          <button onclick="mudarQtd('${item.nome}', -1)">-</button>
+          ${item.qtd}
+          <button onclick="mudarQtd('${item.nome}', 1)">+</button>
+        </div>
       </div>
-    </div>`).join('');
-}
-render(produtos);
-
-function add(id){
-  carrinho.push(produtos.find(p=>p.id===id));
-  atualiza();
-}
-function atualiza(){
-  const total = carrinho.reduce((s,p)=>s+p.preco,0);
-  document.getElementById('total').textContent = `R$ ${(total/100).toLocaleString('pt-BR')}`;
-  document.getElementById('carrinho').style.display = total ? 'flex' : 'none';
-}
-function filtrar(){
-  const v = document.getElementById('busca').value.toLowerCase();
-  render(produtos.filter(p=>p.nome.toLowerCase().includes(v)));
+    `;
+    body.appendChild(div);
+  });
+  contador.textContent = carrinho.reduce((s, p) => s + p.qtd, 0);
+  totalEl.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
 }
 
-/* ---------- CHECKOUT ---------- */
-async function pagar(){
-  const {sessionId} = await fetch("https://SEUDOMINIO.com/create-checkout",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({itens:carrinho})
-  }).then(r=>r.json());
-  const stripe = Stripe('pk_test_...');   // pk_live_... na produção
-  stripe.redirectToCheckout({sessionId});
+function mudarQtd(nome, delta) {
+  const item = carrinho.find(p => p.nome === nome);
+  if (item) {
+    item.qtd += delta;
+    if (item.qtd <= 0) {
+      carrinho = carrinho.filter(p => p.nome !== nome);
+    }
+  }
+  atualizarCarrinho();
+}
+
+function toggleCarrinho() {
+  document.getElementById('carrinhoSidebar').classList.toggle('aberto');
+}
+
+function exibirCheckout() {
+  if (carrho.length === 0) return alert('Carrinho vazio!');
+  document.getElementById('checkoutForm').style.display = 'block';
+}
+
+function atualizarForma() {
+  const forma = document.getElementById('formaPagamento').value;
+  document.getElementById('parcelas').style.display = forma === 'cartao' ? 'block' : 'none';
+}
+
+function finalizarCompra() {
+  const forma = document.getElementById('formaPagamento').value;
+  if (!forma) return alert('Escolha a forma de pagamento!');
+  const total = carrinho.reduce((s, p) => s + p.preco * p.qtd, 0);
+  const lista = carrinho.map(p => `${p.qtd}x ${p.nome}`).join(', ');
+  let msg = `Pedido confirmado!\n\n${lista}\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+  if (forma === 'pix') {
+    const desconto = (total * 0.9).toFixed(2).replace('.', ',');
+    msg += `\n\nPix com 10% desconto: R$ ${desconto}\nChave: 11987654311\nApós o pagamento envie o comprovante no WhatsApp.`;
+  } else {
+    const parcelas = document.getElementById('parcelas').value;
+    msg += `\n\nCartão em ${parcelas}x sem juros.\nVocê receberá o link de pagamento por WhatsApp.`;
+  }
+  alert(msg);
+  carrinho = [];
+  atualizarCarrinho();
+  toggleCarrinho();
 }
 </script>
+
 </body>
 </html>
