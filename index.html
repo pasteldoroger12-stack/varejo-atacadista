@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Marketplace Brasil – De Tudo que Você Precisa</title>
+<title>MegaMarket – Tudo em um Só Lugar</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -54,7 +54,7 @@ footer{background:#000;color:#fff;text-align:center;padding:12px;font-size:12px}
 <body>
 
 <header>
-  <div class="logo">Marketplace Brasil</div>
+  <div class="logo">MegaMarket</div>
   <div class="carrinho" onclick="toggleCarrinho()">
     <i class="fas fa-shopping-cart"></i>
     <span id="contador">0</span>
@@ -68,10 +68,14 @@ footer{background:#000;color:#fff;text-align:center;padding:12px;font-size:12px}
   <a href="#">Beleza</a>
   <a href="#">Fitness</a>
   <a href="#">Pet</a>
+  <a href="#">Livros</a>
+  <a href="#">Brinquedos</a>
+  <a href="#">Automotivo</a>
+  <a href="#">Ferramentas</a>
 </nav>
 
 <div class="banner">
-  🏴 MARKETPLACE BRASIL – Clique, adicione ao carrinho e receba em casa!
+  🏴 MegaMarket – Clique, adicione ao carrinho e receba em casa!
 </div>
 
 <div class="produtos">
@@ -124,135 +128,261 @@ footer{background:#000;color:#fff;text-align:center;padding:12px;font-size:12px}
     <button onclick="addCarrinho('Cama Pet', 119, 'https://images.unsplash.com/photo-1583337130414-334c62dcef65?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
   </div>
 
-</div>
-
-<!-- Carrinho lateral -->
-<div class="carrinho-sidebar" id="carrinhoSidebar">
-  <div class="carrinho-header">
-    <h4>Meu Carrinho</h4>
-    <i class="fas fa-times" onclick="toggleCarrinho()"></i>
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1593642632823-8f785910d129?auto=format&fit=crop&w=800&q=60" alt="Notebook">
+    <h3>Notebook Gamer 15"</h3>
+    <p>i7, 16 GB, RTX 4060, SSD 512</p>
+    <p class="preco">R$ 4.999,00</p>
+    <button onclick="addCarrinho('Notebook Gamer', 4999, 'https://images.unsplash.com/photo-1593642632823-8f785910d129?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
   </div>
-  <div class="carrinho-body" id="carrinhoBody"></div>
-  <div class="carrinho-footer">
-    <div class="total" id="total">Total: R$ 0,00</div>
-    <button onclick="exibirCheckout()">Finalizar compra</button>
-    <div class="checkout-form" id="checkoutForm">
-      <input placeholder="Nome completo" id="nome">
-      <input placeholder="CPF" id="cpf">
-      <input placeholder="Email" id="email">
-      <input placeholder="WhatsApp" id="whatsapp">
-      <select id="formaPagamento" onchange="atualizarForma()">
-        <option value="">Forma de pagamento</option>
-        <option value="pix">Pix (10% desconto)</option>
-        <option value="cartao">Cartão de crédito</option>
-      </select>
-      <select id="parcelas" style="display:none">
-        <option value="1">1x sem juros</option>
-        <option value="2">2x sem juros</option>
-        <option value="3">3x sem juros</option>
-        <option value="4">4x sem juros</option>
-        <option value="5">5x sem juros</option>
-        <option value="6">6x sem juros</option>
-        <option value="7">7x sem juros</option>
-        <option value="8">8x sem juros</option>
-        <option value="9">9x sem juros</option>
-        <option value="10">10x sem juros</option>
-        <option value="11">11x sem juros</option>
-        <option value="12">12x sem juros</option>
-      </select>
-      <button onclick="finalizarCompra()">Efetuar pagamento</button>
-    </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=60" alt="Cafeteira">
+    <h3>Cafeteira Expresso</h3>
+    <p>15 bar, 2 xícaras, aço inox</p>
+    <p class="preco">R$ 379,00</p>
+    <button onclick="addCarrinho('Cafeteira Expresso', 379, 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
   </div>
-</div>
 
-<footer>
-  CNPJ: 47.293.333/0001-00 | São Paulo – SP | WhatsApp 11 9 8765-4321
-</footer>
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1606744837616-56c9a5c6a6eb?auto=format&fit=crop&w=800&q=60" alt="Luminária">
+    <h3>Luminária de Mesa LED</h3>
+    <p>3 cores, toque, USB</p>
+    <p class="preco">R$ 89,00</p>
+    <button onclick="addCarrinho('Luminária LED', 89, 'https://images.unsplash.com/photo-1606744837616-56c9a5c6a6eb?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-<script>
-let carrinho = [];
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1583394838336-acb0990a5c15?auto=format&fit=crop&w=800&q=60" alt="Relógio">
+    <h3>Relógio Analógico</h3>
+    <p>Aço, resistente à água, clássico</p>
+    <p class="preco">R$ 259,00</p>
+    <button onclick="addCarrinho('Relógio Analógico', 259, 'https://images.unsplash.com/photo-1583394838336-acb0990a5c15?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-function addCarrinho(nome, preco, img) {
-  const item = carrinho.find(p => p.nome === nome);
-  if (item) {
-    item.qtd++;
-  } else {
-    carrinho.push({nome, preco, img, qtd: 1});
-  }
-  atualizarCarrinho();
-}
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1581078426770-4d336e5de307?auto=format&fit=crop&w=800&q=60" alt="Microfone">
+    <h3>Microfone USB Streamer</h3>
+    <p>RGB, anti-pop, plug & play</p>
+    <p class="preco">R$ 299,00</p>
+    <button onclick="addCarrinho('Microfone USB', 299, 'https://images.unsplash.com/photo-1581078426770-4d336e5de307?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-function atualizarCarrinho() {
-  const body = document.getElementById('carrinhoBody');
-  const contador = document.getElementById('contador');
-  const totalEl = document.getElementById('total');
-  body.innerHTML = '';
-  let total = 0;
-  carrinho.forEach(item => {
-    total += item.preco * item.qtd;
-    const div = document.createElement('div');
-    div.className = 'carrinho-item';
-    div.innerHTML = `
-      <img src="${item.img}" alt="${item.nome}">
-      <div class="carrinho-info">
-        <div class="nome">${item.nome}</div>
-        <div class="qtd">
-          <button onclick="mudarQtd('${item.nome}', -1)">-</button>
-          ${item.qtd}
-          <button onclick="mudarQtd('${item.nome}', 1)">+</button>
-        </div>
-      </div>
-    `;
-    body.appendChild(div);
-  });
-  contador.textContent = carrinho.reduce((s, p) => s + p.qtd, 0);
-  totalEl.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-}
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=60" alt="Tênis">
+    <h3>Tênis Casual</h3>
+    <p>Couro, palmilha memory</p>
+    <p class="preco">R$ 189,00</p>
+    <button onclick="addCarrinho('Tênis Casual', 189, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-function mudarQtd(nome, delta) {
-  const item = carrinho.find(p => p.nome === nome);
-  if (item) {
-    item.qtd += delta;
-    if (item.qtd <= 0) {
-      carrinho = carrinho.filter(p => p.nome !== nome);
-    }
-  }
-  atualizarCarrinho();
-}
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1586953208448-b95c1c2d1a45?auto=format&fit=crop&w=800&q=60" alt="Bolsa">
+    <h3>Bolsa Transversal</h3>
+    <p>Couro sintético, 3 cores</p>
+    <p class="preco">R$ 129,00</p>
+    <button onclick="addCarrinho('Bolsa Transversal', 129, 'https://images.unsplash.com/photo-1586953208448-b95c1c2d1a45?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-function toggleCarrinho() {
-  document.getElementById('carrinhoSidebar').classList.toggle('aberto');
-}
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1602143407151-711a2c3d3928?auto=format&fit=crop&w=800&q=60" alt="Churrasqueira">
+    <h3>Churrasqueira Elétrica</h3>
+    <p>1200 W, grill, antiaderente</p>
+    <p class="preco">R$ 279,00</p>
+    <button onclick="addCarrinho('Churrasqueira', 279, 'https://images.unsplash.com/photo-1602143407151-711a2c3d3928?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-function exibirCheckout() {
-  if (carrho.length === 0) return alert('Carrinho vazio!');
-  document.getElementById('checkoutForm').style.display = 'block';
-}
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1602498453483-52964a13a2e3?auto=format&fit=crop&w=800&q=60" alt="Violão">
+    <h3>Violão Acústico</h3>
+    <p>Madeira marfim, afinador embutido</p>
+    <p class="preco">R$ 449,00</p>
+    <button onclick="addCarrinho('Violão Acústico', 449, 'https://images.unsplash.com/photo-1602498453483-52964a13a2e3?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-function atualizarForma() {
-  const forma = document.getElementById('formaPagamento').value;
-  document.getElementById('parcelas').style.display = forma === 'cartao' ? 'block' : 'none';
-}
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1609592806596-b02fd7dd59cd?auto=format&fit=crop&w=800&q=60" alt="Bicicleta">
+    <h3>Bicicleta Aro 29</h3>
+    <p>21 marchas, freio a disco</p>
+    <p class="preco">R$ 1.399,00</p>
+    <button onclick="addCarrinho('Bicicleta', 1399, 'https://images.unsplash.com/photo-1609592806596-b02fd7dd59cd?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-function finalizarCompra() {
-  const forma = document.getElementById('formaPagamento').value;
-  if (!forma) return alert('Escolha a forma de pagamento!');
-  const total = carrinho.reduce((s, p) => s + p.preco * p.qtd, 0);
-  const lista = carrinho.map(p => `${p.qtd}x ${p.nome}`).join(', ');
-  let msg = `Pedido confirmado!\n\n${lista}\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-  if (forma === 'pix') {
-    const desconto = (total * 0.9).toFixed(2).replace('.', ',');
-    msg += `\n\nPix com 10% desconto: R$ ${desconto}\nChave: 11987654311\nApós o pagamento envie o comprovante no WhatsApp.`;
-  } else {
-    const parcelas = document.getElementById('parcelas').value;
-    msg += `\n\nCartão em ${parcelas}x sem juros.\nVocê receberá o link de pagamento por WhatsApp.`;
-  }
-  alert(msg);
-  carrinho = [];
-  atualizarCarrinho();
-  toggleCarrinho();
-}
-</script>
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611095564154-dc2d4ab52303?auto=format&fit=crop&w=800&q=60" alt="Drone">
+    <h3>Drone 4K GPS</h3>
+    <p>30 min voo, retorno automático</p>
+    <p class="preco">R$ 2.199,00</p>
+    <button onclick="addCarrinho('Drone 4K', 2199, 'https://images.unsplash.com/photo-1611095564154-dc2d4ab52303?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
 
-</body>
-</html>
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Kindle">
+    <h3>Kindle 10ª Geração</h3>
+    <p>Iluminação, 8 GB, sem anúncios</p>
+    <p class="preco">R$ 479,00</p>
+    <button onclick="addCarrinho('Kindle', 479, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162618071-b23999d8d8b0?auto=format&fit=crop&w=800&q=60" alt="Geladeira">
+    <h3>Geladeira 430L</h3>
+    <p>Frost free, inox, classe A</p>
+    <p class="preco">R$ 3.099,00</p>
+    <button onclick="addCarrinho('Geladeira', 3099, 'https://images.unsplash.com/photo-1611162618071-b23999d8d8b0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Cadeira">
+    <h3>Cadeira Gamer RGB</h3>
+    <p>Apoio lombar, reclinável</p>
+    <p class="preco">R$ 899,00</p>
+    <button onclick="addCarrinho('Cadeira Gamer', 899, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Tablet">
+    <h3>Tablet 10"</h3>
+    <p>4G, 128 GB, caneta</p>
+    <p class="preco">R$ 1.299,00</p>
+    <button onclick="addCarrinho('Tablet', 1299, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=60" alt="Impressora">
+    <h3>Impressora Multifuncional</h3>
+    <p>Wi-Fi, scan, cartucho XL</p>
+    <p class="preco">R$ 549,00</p>
+    <button onclick="addCarrinho('Impressora', 549, 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Smart TV">
+    <h3>Smart TV 55" 4K</h3>
+    <p>Android TV, HDR, Bluetooth</p>
+    <p class="preco">R$ 2.799,00</p>
+    <button onclick="addCarrinho('Smart TV', 2799, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Aspirador">
+    <h3>Aspirador Robô</h3>
+    <p>App, mapeamento, autolimpeza</p>
+    <p class="preco">R$ 1.899,00</p>
+    <button onclick="addCarrinho('Aspirador Robô', 1899, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Panela">
+    <h3>Panela de Pressão Elétrica</h3>
+    <p>5 L, 10 funções, timer</p>
+    <p class="preco">R$ 349,00</p>
+    <button onclick="addCarrinho('Panela Elétrica', 349, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Ventilador">
+    <h3>Ventilador de Mesa</h3>
+    <p>3 velocidades, silencioso</p>
+    <p class="preco">R$ 159,00</p>
+    <button onclick="addCarrinho('Ventilador', 159, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Ferro">
+    <h3>Ferro de Passar a Vapor</h3>
+    <p>2200 W, desligamento auto</p>
+    <p class="preco">R$ 199,00</p>
+    <button onclick="addCarrinho('Ferro', 199, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Liquidificador">
+    <h3>Liquidificador 900 W</h3>
+    <p>Velocidades, copo 2 L</p>
+    <p class="preco">R$ 229,00</p>
+    <button onclick="addCarrinho('Liquidificador', 229, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Mixer">
+    <h3>Mixer Portátil</h3>
+    <p>Bateria, copo 500 ml</p>
+    <p class="preco">R$ 99,00</p>
+    <button onclick="addCarrinho('Mixer', 99, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Batedeira">
+    <h3>Batedeira Planetária</h3>
+    <p>4,5 L, 6 velocidades</p>
+    <p class="preco">R$ 499,00</p>
+    <button onclick="addCarrinho('Batedeira', 499, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Sanduicheira">
+    <h3>Sanduicheira Grill</h3>
+    <p>3 em 1, placas removíveis</p>
+    <p class="preco">R$ 179,00</p>
+    <button onclick="addCarrinho('Sanduicheira', 179, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Chaleira">
+    <h3>Chaleira Elétrica</h3>
+    <p>1,7 L, inox, desligamento auto</p>
+    <p class="preco">R$ 149,00</p>
+    <button onclick="addCarrinho('Chaleira', 149, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Torradeira">
+    <h3>Torradeira 2 Fatias</h3>
+    <p>7 níveis, bandeja coletora</p>
+    <p class="preco">R$ 119,00</p>
+    <button onclick="addCarrinho('Torradeira', 119, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Processador">
+    <h3>Processador de Alimentos</h3>
+    <p>1,5 L, 3 discos, 700 W</p>
+    <p class="preco">R$ 299,00</p>
+    <button onclick="addCarrinho('Processador', 299, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Roteador">
+    <h3>Roteador Wi-Fi 6</h3>
+    <p>1800 Mbps, 4 antenas</p>
+    <p class="preco">R$ 399,00</p>
+    <button onclick="addCarrinho('Roteador', 399, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Fechadura">
+    <h3>Fechadura Digital</h3>
+    <p>Digital, senha, app, bateria</p>
+    <p class="preco">R$ 599,00</p>
+    <button onclick="addCarrinho('Fechadura', 599, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60" alt="Projetor">
+    <h3>Projetor Portátil</h3>
+    <p>Full HD, Wi-Fi, 300"</p>
+    <p class="preco">R$ 899,00</p>
+    <button onclick="addCarrinho('Projetor', 899, 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60" alt="Câmera">
+    <h3>Câmera de Segurança</h3>
+    <p>Wi-Fi, visão noturna, APP</p>
+    <p class="preco">R$ 299,00</p>
+    <button onclick="addCarrinho('Câmera', 299, 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=60')">Adicionar ao carrinho</button>
+  </div>
+
+  <div class="produto">
+    <img src="https://images
